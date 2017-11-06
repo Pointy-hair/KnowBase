@@ -1,0 +1,2415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KnowBaseDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CandidatePrevJobsContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
+          <Property Name="Position" Type="nvarchar(max)" />
+          <Property Name="Contacts" Type="int" />
+        </EntityType>
+        <EntityType Name="CandidatePrimarySkill">
+          <Key>
+            <PropertyRef Name="Candidate" />
+          </Key>
+          <Property Name="Candidate" Type="int" Nullable="false" />
+          <Property Name="TechSkill" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Candidates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstNameRus" Type="nvarchar(max)" />
+          <Property Name="FirstNameEng" Type="nvarchar(max)" />
+          <Property Name="LastNameRus" Type="nvarchar(max)" />
+          <Property Name="LastNameEng" Type="nvarchar(max)" />
+          <Property Name="Picture" Type="nvarchar(max)" />
+          <Property Name="Contacts" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="DesiredSalary" Type="int" />
+          <Property Name="Resume" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="EngLevel" Type="int" />
+          <Property Name="PSExperience" Type="date" />
+          <Property Name="HRM" Type="int" Nullable="false" />
+          <Property Name="LastContactDate" Type="date" />
+          <Property Name="LastModifier" Type="int" />
+          <Property Name="Reminder" Type="date" />
+          <Property Name="TechInterviewStatus" Type="bit" />
+          <Property Name="GeneralInterviewStatus" Type="bit" />
+          <Property Name="CustomerInterviewStatus" Type="bit" />
+          <Property Name="CustomerInterviewDate" Type="date" />
+          <Property Name="CustomerInterviewEndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="CandidateSecondarySkills">
+          <Key>
+            <PropertyRef Name="Candidate" />
+            <PropertyRef Name="TechSkill" />
+          </Key>
+          <Property Name="Candidate" Type="int" Nullable="false" />
+          <Property Name="TechSkill" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidateStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidatesVacancies">
+          <Key>
+            <PropertyRef Name="Candidate" />
+            <PropertyRef Name="Vacancy" />
+          </Key>
+          <Property Name="Candidate" Type="int" Nullable="false" />
+          <Property Name="Vacancy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Skype" Type="nvarchar(max)" />
+          <Property Name="LinkedIn" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EngLevels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventIds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Event" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="User" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="int" Nullable="false" />
+          <Property Name="Property" Type="nvarchar(max)" />
+          <Property Name="OldValue" Type="nvarchar(max)" />
+          <Property Name="NewValue" Type="nvarchar(max)" />
+          <Property Name="Candidate" Type="int" />
+          <Property Name="Vacancy" Type="int" />
+          <Property Name="GeneralInterview" Type="int" />
+          <Property Name="TechInterview" Type="int" />
+        </EntityType>
+        <EntityType Name="EventTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralInterviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate" Type="int" Nullable="false" />
+          <Property Name="City" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="HRM" Type="int" Nullable="false" />
+          <Property Name="Interviewer" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="EngLevel" Type="int" />
+          <Property Name="Commentary" Type="nvarchar(max)" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Feedback" Type="nvarchar(max)" />
+          <Property Name="JobChangeReason" Type="nvarchar(max)" />
+          <Property Name="WhenCanStart" Type="date" />
+          <Property Name="ReadyForBusinessTrips" Type="bit" />
+          <Property Name="Interests" Type="nvarchar(max)" />
+          <Property Name="SalaryExpectations" Type="int" />
+        </EntityType>
+        <EntityType Name="GeneralSkills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationEvents">
+          <Key>
+            <PropertyRef Name="Notification" />
+            <PropertyRef Name="Event" />
+          </Key>
+          <Property Name="Notification" Type="int" Nullable="false" />
+          <Property Name="Event" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TechInterviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate" Type="int" Nullable="false" />
+          <Property Name="City" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="HRM" Type="int" Nullable="false" />
+          <Property Name="Interviewer" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="TechSkill" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="int" />
+          <Property Name="Commentary" Type="nvarchar(max)" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Feedback" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TechSkills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Picture" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Picture" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vacancies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar(max)" />
+          <Property Name="RequestDate" Type="date" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="CloseDate" Type="date" />
+          <Property Name="City" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" />
+          <Property Name="EngLevel" Type="int" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="VacancyName" Type="nvarchar(max)" />
+          <Property Name="HRM" Type="int" Nullable="false" />
+          <Property Name="LastModifier" Type="int" />
+        </EntityType>
+        <EntityType Name="VacancyPrimarySkill">
+          <Key>
+            <PropertyRef Name="Vacancy" />
+          </Key>
+          <Property Name="Vacancy" Type="int" Nullable="false" />
+          <Property Name="TechSkill" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VacancySecondarySkills">
+          <Key>
+            <PropertyRef Name="Vacancy" />
+            <PropertyRef Name="TechSkill" />
+          </Key>
+          <Property Name="Vacancy" Type="int" Nullable="false" />
+          <Property Name="TechSkill" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VacancyStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CandidatePrevJobsContacts_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="0..1" />
+          <End Role="CandidatePrevJobsContacts" Type="Self.CandidatePrevJobsContacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrevJobsContacts">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrevJobsContacts_Contacts">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="CandidatePrevJobsContacts" Type="Self.CandidatePrevJobsContacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrevJobsContacts">
+              <PropertyRef Name="Contacts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrimarySkill_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidatePrimarySkill" Type="Self.CandidatePrimarySkill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrimarySkill">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrimarySkill_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkills" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidatePrimarySkill" Type="Self.CandidatePrimarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrimarySkill">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_CandidateStatuses">
+          <End Role="CandidateStatuses" Type="Self.CandidateStatuses" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Contacts">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Contacts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevels" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="LastModifier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSecondarySkills_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateSecondarySkills" Type="Self.CandidateSecondarySkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidateSecondarySkills">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSecondarySkills_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkills" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateSecondarySkills" Type="Self.CandidateSecondarySkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidateSecondarySkills">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatesVacancies_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+          <End Role="CandidatesVacancies" Type="Self.CandidatesVacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatesVacancies">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatesVacancies_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="1" />
+          <End Role="CandidatesVacancies" Type="Self.CandidatesVacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatesVacancies">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventIds">
+          <End Role="EventIds" Type="Self.EventIds" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventIds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventTypes">
+          <End Role="EventTypes" Type="Self.EventTypes" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="EventType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_GeneralInterviews">
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneralInterviews">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="GeneralInterview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_TechInterviews">
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechInterviews">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="TechInterview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevels" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="Interviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationEvents_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="NotificationEvents" Type="Self.NotificationEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationEvents">
+              <PropertyRef Name="Event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationEvents_Notifications">
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="1" />
+          <End Role="NotificationEvents" Type="Self.NotificationEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationEvents">
+              <PropertyRef Name="Notification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_NotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationTypes" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkills" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="TechInterviews" Type="Self.TechInterviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="Interviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevels" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="LastModifier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_VacancyStatuses">
+          <End Role="VacancyStatuses" Type="Self.VacancyStatuses" Multiplicity="1" />
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VacancyStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancyPrimarySkill_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkills" Multiplicity="1" />
+          <End Role="VacancyPrimarySkill" Type="Self.VacancyPrimarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancyPrimarySkill">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancyPrimarySkill_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="1" />
+          <End Role="VacancyPrimarySkill" Type="Self.VacancyPrimarySkill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancyPrimarySkill">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancySecondarySkills_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkills" Multiplicity="1" />
+          <End Role="VacancySecondarySkills" Type="Self.VacancySecondarySkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancySecondarySkills">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancySecondarySkills_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="1" />
+          <End Role="VacancySecondarySkills" Type="Self.VacancySecondarySkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancySecondarySkills">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnowBaseDBModelStoreContainer">
+          <EntitySet Name="CandidatePrevJobsContacts" EntityType="Self.CandidatePrevJobsContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidatePrimarySkill" EntityType="Self.CandidatePrimarySkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateSecondarySkills" EntityType="Self.CandidateSecondarySkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateStatuses" EntityType="Self.CandidateStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidatesVacancies" EntityType="Self.CandidatesVacancies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngLevels" EntityType="Self.EngLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventIds" EntityType="Self.EventIds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventTypes" EntityType="Self.EventTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralInterviews" EntityType="Self.GeneralInterviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralSkills" EntityType="Self.GeneralSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationEvents" EntityType="Self.NotificationEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechInterviews" EntityType="Self.TechInterviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechSkills" EntityType="Self.TechSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacancies" EntityType="Self.Vacancies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacancyPrimarySkill" EntityType="Self.VacancyPrimarySkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacancySecondarySkills" EntityType="Self.VacancySecondarySkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacancyStatuses" EntityType="Self.VacancyStatuses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CandidatePrevJobsContacts_Candidates" Association="Self.FK_CandidatePrevJobsContacts_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidatePrevJobsContacts" EntitySet="CandidatePrevJobsContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrevJobsContacts_Contacts" Association="Self.FK_CandidatePrevJobsContacts_Contacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="CandidatePrevJobsContacts" EntitySet="CandidatePrevJobsContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrimarySkill_Candidates" Association="Self.FK_CandidatePrimarySkill_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidatePrimarySkill" EntitySet="CandidatePrimarySkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrimarySkill_TechSkills" Association="Self.FK_CandidatePrimarySkill_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="CandidatePrimarySkill" EntitySet="CandidatePrimarySkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_CandidateStatuses" Association="Self.FK_Candidates_CandidateStatuses">
+            <End Role="CandidateStatuses" EntitySet="CandidateStatuses" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Cities" Association="Self.FK_Candidates_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Contacts" Association="Self.FK_Candidates_Contacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_EngLevels" Association="Self.FK_Candidates_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Users" Association="Self.FK_Candidates_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Users1" Association="Self.FK_Candidates_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSecondarySkills_Candidates" Association="Self.FK_CandidateSecondarySkills_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidateSecondarySkills" EntitySet="CandidateSecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSecondarySkills_TechSkills" Association="Self.FK_CandidateSecondarySkills_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="CandidateSecondarySkills" EntitySet="CandidateSecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatesVacancies_Candidates" Association="Self.FK_CandidatesVacancies_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidatesVacancies" EntitySet="CandidatesVacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatesVacancies_Vacancies" Association="Self.FK_CandidatesVacancies_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="CandidatesVacancies" EntitySet="CandidatesVacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Candidates" Association="Self.FK_Events_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventIds" Association="Self.FK_Events_EventIds">
+            <End Role="EventIds" EntitySet="EventIds" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventTypes" Association="Self.FK_Events_EventTypes">
+            <End Role="EventTypes" EntitySet="EventTypes" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_GeneralInterviews" Association="Self.FK_Events_GeneralInterviews">
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_TechInterviews" Association="Self.FK_Events_TechInterviews">
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Users" Association="Self.FK_Events_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Vacancies" Association="Self.FK_Events_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Candidates" Association="Self.FK_GeneralInterviews_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Cities" Association="Self.FK_GeneralInterviews_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_EngLevels" Association="Self.FK_GeneralInterviews_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Users" Association="Self.FK_GeneralInterviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Users1" Association="Self.FK_GeneralInterviews_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationEvents_Events" Association="Self.FK_NotificationEvents_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="NotificationEvents" EntitySet="NotificationEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationEvents_Notifications" Association="Self.FK_NotificationEvents_Notifications">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="NotificationEvents" EntitySet="NotificationEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_NotificationTypes" Association="Self.FK_Notifications_NotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_Users" Association="Self.FK_Notifications_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Candidates" Association="Self.FK_TechInterviews_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Cities" Association="Self.FK_TechInterviews_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_TechSkills" Association="Self.FK_TechInterviews_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Users" Association="Self.FK_TechInterviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Users1" Association="Self.FK_TechInterviews_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Cities" Association="Self.FK_Vacancies_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_EngLevels" Association="Self.FK_Vacancies_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Users" Association="Self.FK_Vacancies_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Users1" Association="Self.FK_Vacancies_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_VacancyStatuses" Association="Self.FK_Vacancies_VacancyStatuses">
+            <End Role="VacancyStatuses" EntitySet="VacancyStatuses" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancyPrimarySkill_TechSkills" Association="Self.FK_VacancyPrimarySkill_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="VacancyPrimarySkill" EntitySet="VacancyPrimarySkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancyPrimarySkill_Vacancies" Association="Self.FK_VacancyPrimarySkill_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="VacancyPrimarySkill" EntitySet="VacancyPrimarySkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancySecondarySkills_TechSkills" Association="Self.FK_VacancySecondarySkills_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="VacancySecondarySkills" EntitySet="VacancySecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancySecondarySkills_Vacancies" Association="Self.FK_VacancySecondarySkills_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="VacancySecondarySkills" EntitySet="VacancySecondarySkills" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KnowBaseDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CandidatePrevJobsContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contacts" Type="Int32" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_CandidatePrevJobsContacts_Candidates" FromRole="CandidatePrevJobsContacts" ToRole="Candidates" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_CandidatePrevJobsContacts_Contacts" FromRole="CandidatePrevJobsContacts" ToRole="Contacts" />
+        </EntityType>
+        <EntityType Name="CandidatePrimarySkill">
+          <Key>
+            <PropertyRef Name="Candidate" />
+          </Key>
+          <Property Name="Candidate" Type="Int32" Nullable="false" />
+          <Property Name="TechSkill" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_CandidatePrimarySkill_Candidates" FromRole="CandidatePrimarySkill" ToRole="Candidates" />
+          <NavigationProperty Name="TechSkill1" Relationship="Self.FK_CandidatePrimarySkill_TechSkills" FromRole="CandidatePrimarySkill" ToRole="TechSkills" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstNameRus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstNameEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameRus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contacts" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="DesiredSalary" Type="Int32" />
+          <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="EngLevel" Type="Int32" />
+          <Property Name="PSExperience" Type="DateTime" Precision="0" />
+          <Property Name="HRM" Type="Int32" Nullable="false" />
+          <Property Name="LastContactDate" Type="DateTime" Precision="0" />
+          <Property Name="LastModifier" Type="Int32" />
+          <Property Name="Reminder" Type="DateTime" Precision="0" />
+          <Property Name="TechInterviewStatus" Type="Boolean" />
+          <Property Name="GeneralInterviewStatus" Type="Boolean" />
+          <Property Name="CustomerInterviewStatus" Type="Boolean" />
+          <Property Name="CustomerInterviewDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomerInterviewEndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CandidatePrevJobsContacts" Relationship="Self.FK_CandidatePrevJobsContacts_Candidates" FromRole="Candidates" ToRole="CandidatePrevJobsContacts" />
+          <NavigationProperty Name="CandidatePrimarySkill" Relationship="Self.FK_CandidatePrimarySkill_Candidates" FromRole="Candidates" ToRole="CandidatePrimarySkill" />
+          <NavigationProperty Name="CandidateStatus" Relationship="Self.FK_Candidates_CandidateStatuses" FromRole="Candidates" ToRole="CandidateStatuses" />
+          <NavigationProperty Name="City1" Relationship="Self.FK_Candidates_Cities" FromRole="Candidates" ToRole="Cities" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Candidates_Contacts" FromRole="Candidates" ToRole="Contacts" />
+          <NavigationProperty Name="EngLevel1" Relationship="Self.FK_Candidates_EngLevels" FromRole="Candidates" ToRole="EngLevels" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Candidates_Users" FromRole="Candidates" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Candidates_Users1" FromRole="Candidates" ToRole="Users" />
+          <NavigationProperty Name="CandidateSecondarySkills" Relationship="Self.FK_CandidateSecondarySkills_Candidates" FromRole="Candidates" ToRole="CandidateSecondarySkills" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_Candidates" FromRole="Candidates" ToRole="Events" />
+          <NavigationProperty Name="GeneralInterviews" Relationship="Self.FK_GeneralInterviews_Candidates" FromRole="Candidates" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="TechInterviews" Relationship="Self.FK_TechInterviews_Candidates" FromRole="Candidates" ToRole="TechInterviews" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.CandidatesVacancies" FromRole="Candidates" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="CandidateSecondarySkill">
+          <Key>
+            <PropertyRef Name="Candidate" />
+            <PropertyRef Name="TechSkill" />
+          </Key>
+          <Property Name="Candidate" Type="Int32" Nullable="false" />
+          <Property Name="TechSkill" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_CandidateSecondarySkills_Candidates" FromRole="CandidateSecondarySkills" ToRole="Candidates" />
+          <NavigationProperty Name="TechSkill1" Relationship="Self.FK_CandidateSecondarySkills_TechSkills" FromRole="CandidateSecondarySkills" ToRole="TechSkills" />
+        </EntityType>
+        <EntityType Name="CandidateStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_CandidateStatuses" FromRole="CandidateStatuses" ToRole="Candidates" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_Cities" FromRole="Cities" ToRole="Candidates" />
+          <NavigationProperty Name="GeneralInterviews" Relationship="Self.FK_GeneralInterviews_Cities" FromRole="Cities" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="TechInterviews" Relationship="Self.FK_TechInterviews_Cities" FromRole="Cities" ToRole="TechInterviews" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.FK_Vacancies_Cities" FromRole="Cities" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedIn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidatePrevJobsContacts" Relationship="Self.FK_CandidatePrevJobsContacts_Contacts" FromRole="Contacts" ToRole="CandidatePrevJobsContacts" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_Contacts" FromRole="Contacts" ToRole="Candidates" />
+        </EntityType>
+        <EntityType Name="EngLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_EngLevels" FromRole="EngLevels" ToRole="Candidates" />
+          <NavigationProperty Name="GeneralInterviews" Relationship="Self.FK_GeneralInterviews_EngLevels" FromRole="EngLevels" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.FK_Vacancies_EngLevels" FromRole="EngLevels" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="EventId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_EventIds" FromRole="EventIds" ToRole="Events" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Event1" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="User" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="Int32" Nullable="false" />
+          <Property Name="Property" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OldValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Candidate" Type="Int32" />
+          <Property Name="Vacancy" Type="Int32" />
+          <Property Name="GeneralInterview" Type="Int32" />
+          <Property Name="TechInterview" Type="Int32" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_Events_Candidates" FromRole="Events" ToRole="Candidates" />
+          <NavigationProperty Name="EventId" Relationship="Self.FK_Events_EventIds" FromRole="Events" ToRole="EventIds" />
+          <NavigationProperty Name="EventType1" Relationship="Self.FK_Events_EventTypes" FromRole="Events" ToRole="EventTypes" />
+          <NavigationProperty Name="GeneralInterview1" Relationship="Self.FK_Events_GeneralInterviews" FromRole="Events" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="TechInterview1" Relationship="Self.FK_Events_TechInterviews" FromRole="Events" ToRole="TechInterviews" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Events_Users" FromRole="Events" ToRole="Users" />
+          <NavigationProperty Name="Vacancy1" Relationship="Self.FK_Events_Vacancies" FromRole="Events" ToRole="Vacancies" />
+          <NavigationProperty Name="Notifications" Relationship="Self.NotificationEvents" FromRole="Events" ToRole="Notifications" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_EventTypes" FromRole="EventTypes" ToRole="Events" />
+        </EntityType>
+        <EntityType Name="GeneralInterview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="HRM" Type="Int32" Nullable="false" />
+          <Property Name="Interviewer" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="EngLevel" Type="Int32" />
+          <Property Name="Commentary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobChangeReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhenCanStart" Type="DateTime" Precision="0" />
+          <Property Name="ReadyForBusinessTrips" Type="Boolean" />
+          <Property Name="Interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SalaryExpectations" Type="Int32" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_GeneralInterviews_Candidates" FromRole="GeneralInterviews" ToRole="Candidates" />
+          <NavigationProperty Name="City1" Relationship="Self.FK_GeneralInterviews_Cities" FromRole="GeneralInterviews" ToRole="Cities" />
+          <NavigationProperty Name="EngLevel1" Relationship="Self.FK_GeneralInterviews_EngLevels" FromRole="GeneralInterviews" ToRole="EngLevels" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_GeneralInterviews" FromRole="GeneralInterviews" ToRole="Events" />
+          <NavigationProperty Name="User" Relationship="Self.FK_GeneralInterviews_Users" FromRole="GeneralInterviews" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_GeneralInterviews_Users1" FromRole="GeneralInterviews" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GeneralSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="NotificationType" Relationship="Self.FK_Notifications_NotificationTypes" FromRole="Notifications" ToRole="NotificationTypes" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
+          <NavigationProperty Name="Events" Relationship="Self.NotificationEvents" FromRole="Notifications" ToRole="Events" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_NotificationTypes" FromRole="NotificationTypes" ToRole="Notifications" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TechInterview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="HRM" Type="Int32" Nullable="false" />
+          <Property Name="Interviewer" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="TechSkill" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Int32" />
+          <Property Name="Commentary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidate1" Relationship="Self.FK_TechInterviews_Candidates" FromRole="TechInterviews" ToRole="Candidates" />
+          <NavigationProperty Name="City1" Relationship="Self.FK_TechInterviews_Cities" FromRole="TechInterviews" ToRole="Cities" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_TechInterviews" FromRole="TechInterviews" ToRole="Events" />
+          <NavigationProperty Name="TechSkill1" Relationship="Self.FK_TechInterviews_TechSkills" FromRole="TechInterviews" ToRole="TechSkills" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TechInterviews_Users" FromRole="TechInterviews" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_TechInterviews_Users1" FromRole="TechInterviews" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TechSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidatePrimarySkills" Relationship="Self.FK_CandidatePrimarySkill_TechSkills" FromRole="TechSkills" ToRole="CandidatePrimarySkill" />
+          <NavigationProperty Name="CandidateSecondarySkills" Relationship="Self.FK_CandidateSecondarySkills_TechSkills" FromRole="TechSkills" ToRole="CandidateSecondarySkills" />
+          <NavigationProperty Name="TechInterviews" Relationship="Self.FK_TechInterviews_TechSkills" FromRole="TechSkills" ToRole="TechInterviews" />
+          <NavigationProperty Name="VacancyPrimarySkills" Relationship="Self.FK_VacancyPrimarySkill_TechSkills" FromRole="TechSkills" ToRole="VacancyPrimarySkill" />
+          <NavigationProperty Name="VacancySecondarySkills" Relationship="Self.FK_VacancySecondarySkills_TechSkills" FromRole="TechSkills" ToRole="VacancySecondarySkills" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserRoles" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_Users" FromRole="Users" ToRole="Candidates" />
+          <NavigationProperty Name="Candidates1" Relationship="Self.FK_Candidates_Users1" FromRole="Users" ToRole="Candidates" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_Users" FromRole="Users" ToRole="Events" />
+          <NavigationProperty Name="GeneralInterviews" Relationship="Self.FK_GeneralInterviews_Users" FromRole="Users" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="GeneralInterviews1" Relationship="Self.FK_GeneralInterviews_Users1" FromRole="Users" ToRole="GeneralInterviews" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
+          <NavigationProperty Name="TechInterviews" Relationship="Self.FK_TechInterviews_Users" FromRole="Users" ToRole="TechInterviews" />
+          <NavigationProperty Name="TechInterviews1" Relationship="Self.FK_TechInterviews_Users1" FromRole="Users" ToRole="TechInterviews" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_UserRoles" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.FK_Vacancies_Users" FromRole="Users" ToRole="Vacancies" />
+          <NavigationProperty Name="Vacancies1" Relationship="Self.FK_Vacancies_Users1" FromRole="Users" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="Vacancy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDate" Type="DateTime" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="CloseDate" Type="DateTime" Precision="0" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EngLevel" Type="Int32" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="VacancyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HRM" Type="Int32" Nullable="false" />
+          <Property Name="LastModifier" Type="Int32" />
+          <NavigationProperty Name="City1" Relationship="Self.FK_Vacancies_Cities" FromRole="Vacancies" ToRole="Cities" />
+          <NavigationProperty Name="EngLevel1" Relationship="Self.FK_Vacancies_EngLevels" FromRole="Vacancies" ToRole="EngLevels" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Events_Vacancies" FromRole="Vacancies" ToRole="Events" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Vacancies_Users" FromRole="Vacancies" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Vacancies_Users1" FromRole="Vacancies" ToRole="Users" />
+          <NavigationProperty Name="VacancyStatus" Relationship="Self.FK_Vacancies_VacancyStatuses" FromRole="Vacancies" ToRole="VacancyStatuses" />
+          <NavigationProperty Name="VacancyPrimarySkill" Relationship="Self.FK_VacancyPrimarySkill_Vacancies" FromRole="Vacancies" ToRole="VacancyPrimarySkill" />
+          <NavigationProperty Name="VacancySecondarySkills" Relationship="Self.FK_VacancySecondarySkills_Vacancies" FromRole="Vacancies" ToRole="VacancySecondarySkills" />
+          <NavigationProperty Name="Candidates" Relationship="Self.CandidatesVacancies" FromRole="Vacancies" ToRole="Candidates" />
+        </EntityType>
+        <EntityType Name="VacancyPrimarySkill">
+          <Key>
+            <PropertyRef Name="Vacancy" />
+          </Key>
+          <Property Name="Vacancy" Type="Int32" Nullable="false" />
+          <Property Name="TechSkill" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TechSkill1" Relationship="Self.FK_VacancyPrimarySkill_TechSkills" FromRole="VacancyPrimarySkill" ToRole="TechSkills" />
+          <NavigationProperty Name="Vacancy1" Relationship="Self.FK_VacancyPrimarySkill_Vacancies" FromRole="VacancyPrimarySkill" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="VacancySecondarySkill">
+          <Key>
+            <PropertyRef Name="Vacancy" />
+            <PropertyRef Name="TechSkill" />
+          </Key>
+          <Property Name="Vacancy" Type="Int32" Nullable="false" />
+          <Property Name="TechSkill" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TechSkill1" Relationship="Self.FK_VacancySecondarySkills_TechSkills" FromRole="VacancySecondarySkills" ToRole="TechSkills" />
+          <NavigationProperty Name="Vacancy1" Relationship="Self.FK_VacancySecondarySkills_Vacancies" FromRole="VacancySecondarySkills" ToRole="Vacancies" />
+        </EntityType>
+        <EntityType Name="VacancyStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.FK_Vacancies_VacancyStatuses" FromRole="VacancyStatuses" ToRole="Vacancies" />
+        </EntityType>
+        <Association Name="FK_CandidatePrevJobsContacts_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="0..1" />
+          <End Role="CandidatePrevJobsContacts" Type="Self.CandidatePrevJobsContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrevJobsContacts">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrevJobsContacts_Contacts">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="CandidatePrevJobsContacts" Type="Self.CandidatePrevJobsContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrevJobsContacts">
+              <PropertyRef Name="Contacts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrimarySkill_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidatePrimarySkill" Type="Self.CandidatePrimarySkill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrimarySkill">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatePrimarySkill_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkill" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidatePrimarySkill" Type="Self.CandidatePrimarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatePrimarySkill">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_CandidateStatuses">
+          <End Role="CandidateStatuses" Type="Self.CandidateStatus" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Contacts">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Contacts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevel" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="LastModifier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSecondarySkills_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateSecondarySkills" Type="Self.CandidateSecondarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidateSecondarySkills">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="Candidate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSecondarySkills_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkill" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateSecondarySkills" Type="Self.CandidateSecondarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidateSecondarySkills">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevel" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_EngLevels">
+          <End Role="EngLevels" Type="Self.EngLevel" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="EngLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventIds">
+          <End Role="EventIds" Type="Self.EventId" Multiplicity="1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventIds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Event1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventTypes">
+          <End Role="EventTypes" Type="Self.EventType" Multiplicity="1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="EventType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_GeneralInterviews">
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneralInterviews">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="GeneralInterview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_TechInterviews">
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechInterviews">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="TechInterview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="0..1" />
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralInterviews_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="GeneralInterviews" Type="Self.GeneralInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralInterviews">
+              <PropertyRef Name="Interviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_NotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationType" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkill" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechInterviews_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TechInterviews" Type="Self.TechInterview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechInterviews">
+              <PropertyRef Name="Interviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancyPrimarySkill_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkill" Multiplicity="1" />
+          <End Role="VacancyPrimarySkill" Type="Self.VacancyPrimarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancyPrimarySkill">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancySecondarySkills_TechSkills">
+          <End Role="TechSkills" Type="Self.TechSkill" Multiplicity="1" />
+          <End Role="VacancySecondarySkills" Type="Self.VacancySecondarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechSkills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancySecondarySkills">
+              <PropertyRef Name="TechSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="HRM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="LastModifier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancies_VacancyStatuses">
+          <End Role="VacancyStatuses" Type="Self.VacancyStatus" Multiplicity="1" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VacancyStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vacancies">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancyPrimarySkill_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="1" />
+          <End Role="VacancyPrimarySkill" Type="Self.VacancyPrimarySkill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancyPrimarySkill">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacancySecondarySkills_Vacancies">
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="1" />
+          <End Role="VacancySecondarySkills" Type="Self.VacancySecondarySkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VacancySecondarySkills">
+              <PropertyRef Name="Vacancy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CandidatesVacancies">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+        </Association>
+        <Association Name="NotificationEvents">
+          <End Role="Events" Type="Self.Event" Multiplicity="*" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="KnowBaseDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CandidatePrevJobsContacts" EntityType="Self.CandidatePrevJobsContact" />
+          <EntitySet Name="CandidatePrimarySkills" EntityType="Self.CandidatePrimarySkill" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="CandidateSecondarySkills" EntityType="Self.CandidateSecondarySkill" />
+          <EntitySet Name="CandidateStatuses" EntityType="Self.CandidateStatus" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="EngLevels" EntityType="Self.EngLevel" />
+          <EntitySet Name="EventIds" EntityType="Self.EventId" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="EventTypes" EntityType="Self.EventType" />
+          <EntitySet Name="GeneralInterviews" EntityType="Self.GeneralInterview" />
+          <EntitySet Name="GeneralSkills" EntityType="Self.GeneralSkill" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TechInterviews" EntityType="Self.TechInterview" />
+          <EntitySet Name="TechSkills" EntityType="Self.TechSkill" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
+          <EntitySet Name="VacancyPrimarySkills" EntityType="Self.VacancyPrimarySkill" />
+          <EntitySet Name="VacancySecondarySkills" EntityType="Self.VacancySecondarySkill" />
+          <EntitySet Name="VacancyStatuses" EntityType="Self.VacancyStatus" />
+          <AssociationSet Name="FK_CandidatePrevJobsContacts_Candidates" Association="Self.FK_CandidatePrevJobsContacts_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidatePrevJobsContacts" EntitySet="CandidatePrevJobsContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrevJobsContacts_Contacts" Association="Self.FK_CandidatePrevJobsContacts_Contacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="CandidatePrevJobsContacts" EntitySet="CandidatePrevJobsContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrimarySkill_Candidates" Association="Self.FK_CandidatePrimarySkill_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidatePrimarySkill" EntitySet="CandidatePrimarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatePrimarySkill_TechSkills" Association="Self.FK_CandidatePrimarySkill_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="CandidatePrimarySkill" EntitySet="CandidatePrimarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_CandidateStatuses" Association="Self.FK_Candidates_CandidateStatuses">
+            <End Role="CandidateStatuses" EntitySet="CandidateStatuses" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Cities" Association="Self.FK_Candidates_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Contacts" Association="Self.FK_Candidates_Contacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_EngLevels" Association="Self.FK_Candidates_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Users" Association="Self.FK_Candidates_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Users1" Association="Self.FK_Candidates_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSecondarySkills_Candidates" Association="Self.FK_CandidateSecondarySkills_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidateSecondarySkills" EntitySet="CandidateSecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Candidates" Association="Self.FK_Events_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Candidates" Association="Self.FK_GeneralInterviews_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Candidates" Association="Self.FK_TechInterviews_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSecondarySkills_TechSkills" Association="Self.FK_CandidateSecondarySkills_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="CandidateSecondarySkills" EntitySet="CandidateSecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Cities" Association="Self.FK_GeneralInterviews_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Cities" Association="Self.FK_TechInterviews_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Cities" Association="Self.FK_Vacancies_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_EngLevels" Association="Self.FK_GeneralInterviews_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_EngLevels" Association="Self.FK_Vacancies_EngLevels">
+            <End Role="EngLevels" EntitySet="EngLevels" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventIds" Association="Self.FK_Events_EventIds">
+            <End Role="EventIds" EntitySet="EventIds" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventTypes" Association="Self.FK_Events_EventTypes">
+            <End Role="EventTypes" EntitySet="EventTypes" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_GeneralInterviews" Association="Self.FK_Events_GeneralInterviews">
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_TechInterviews" Association="Self.FK_Events_TechInterviews">
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Users" Association="Self.FK_Events_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Vacancies" Association="Self.FK_Events_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Users" Association="Self.FK_GeneralInterviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralInterviews_Users1" Association="Self.FK_GeneralInterviews_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GeneralInterviews" EntitySet="GeneralInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_NotificationTypes" Association="Self.FK_Notifications_NotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_Users" Association="Self.FK_Notifications_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_TechSkills" Association="Self.FK_TechInterviews_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Users" Association="Self.FK_TechInterviews_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechInterviews_Users1" Association="Self.FK_TechInterviews_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TechInterviews" EntitySet="TechInterviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancyPrimarySkill_TechSkills" Association="Self.FK_VacancyPrimarySkill_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="VacancyPrimarySkill" EntitySet="VacancyPrimarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancySecondarySkills_TechSkills" Association="Self.FK_VacancySecondarySkills_TechSkills">
+            <End Role="TechSkills" EntitySet="TechSkills" />
+            <End Role="VacancySecondarySkills" EntitySet="VacancySecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Users" Association="Self.FK_Vacancies_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_Users1" Association="Self.FK_Vacancies_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancies_VacancyStatuses" Association="Self.FK_Vacancies_VacancyStatuses">
+            <End Role="VacancyStatuses" EntitySet="VacancyStatuses" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancyPrimarySkill_Vacancies" Association="Self.FK_VacancyPrimarySkill_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="VacancyPrimarySkill" EntitySet="VacancyPrimarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacancySecondarySkills_Vacancies" Association="Self.FK_VacancySecondarySkills_Vacancies">
+            <End Role="Vacancies" EntitySet="Vacancies" />
+            <End Role="VacancySecondarySkills" EntitySet="VacancySecondarySkills" />
+          </AssociationSet>
+          <AssociationSet Name="CandidatesVacancies" Association="Self.CandidatesVacancies">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="Vacancies" EntitySet="Vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="NotificationEvents" Association="Self.NotificationEvents">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KnowBaseDBModelStoreContainer" CdmEntityContainer="KnowBaseDBContext">
+          <EntitySetMapping Name="CandidatePrevJobsContacts">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.CandidatePrevJobsContact">
+              <MappingFragment StoreEntitySet="CandidatePrevJobsContacts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidatePrimarySkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.CandidatePrimarySkill">
+              <MappingFragment StoreEntitySet="CandidatePrimarySkill">
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="TechSkill" ColumnName="TechSkill" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstNameRus" ColumnName="FirstNameRus" />
+                <ScalarProperty Name="FirstNameEng" ColumnName="FirstNameEng" />
+                <ScalarProperty Name="LastNameRus" ColumnName="LastNameRus" />
+                <ScalarProperty Name="LastNameEng" ColumnName="LastNameEng" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DesiredSalary" ColumnName="DesiredSalary" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EngLevel" ColumnName="EngLevel" />
+                <ScalarProperty Name="PSExperience" ColumnName="PSExperience" />
+                <ScalarProperty Name="HRM" ColumnName="HRM" />
+                <ScalarProperty Name="LastContactDate" ColumnName="LastContactDate" />
+                <ScalarProperty Name="LastModifier" ColumnName="LastModifier" />
+                <ScalarProperty Name="Reminder" ColumnName="Reminder" />
+                <ScalarProperty Name="TechInterviewStatus" ColumnName="TechInterviewStatus" />
+                <ScalarProperty Name="GeneralInterviewStatus" ColumnName="GeneralInterviewStatus" />
+                <ScalarProperty Name="CustomerInterviewStatus" ColumnName="CustomerInterviewStatus" />
+                <ScalarProperty Name="CustomerInterviewDate" ColumnName="CustomerInterviewDate" />
+                <ScalarProperty Name="CustomerInterviewEndDate" ColumnName="CustomerInterviewEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateSecondarySkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.CandidateSecondarySkill">
+              <MappingFragment StoreEntitySet="CandidateSecondarySkills">
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="TechSkill" ColumnName="TechSkill" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateStatuses">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.CandidateStatus">
+              <MappingFragment StoreEntitySet="CandidateStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngLevels">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.EngLevel">
+              <MappingFragment StoreEntitySet="EngLevels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventIds">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.EventId">
+              <MappingFragment StoreEntitySet="EventIds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Event1" ColumnName="Event" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="Vacancy" ColumnName="Vacancy" />
+                <ScalarProperty Name="GeneralInterview" ColumnName="GeneralInterview" />
+                <ScalarProperty Name="TechInterview" ColumnName="TechInterview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.EventType">
+              <MappingFragment StoreEntitySet="EventTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralInterviews">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.GeneralInterview">
+              <MappingFragment StoreEntitySet="GeneralInterviews">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HRM" ColumnName="HRM" />
+                <ScalarProperty Name="Interviewer" ColumnName="Interviewer" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EngLevel" ColumnName="EngLevel" />
+                <ScalarProperty Name="Commentary" ColumnName="Commentary" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="JobChangeReason" ColumnName="JobChangeReason" />
+                <ScalarProperty Name="WhenCanStart" ColumnName="WhenCanStart" />
+                <ScalarProperty Name="ReadyForBusinessTrips" ColumnName="ReadyForBusinessTrips" />
+                <ScalarProperty Name="Interests" ColumnName="Interests" />
+                <ScalarProperty Name="SalaryExpectations" ColumnName="SalaryExpectations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralSkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.GeneralSkill">
+              <MappingFragment StoreEntitySet="GeneralSkills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationTypes">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.NotificationType">
+              <MappingFragment StoreEntitySet="NotificationTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechInterviews">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.TechInterview">
+              <MappingFragment StoreEntitySet="TechInterviews">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Candidate" ColumnName="Candidate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HRM" ColumnName="HRM" />
+                <ScalarProperty Name="Interviewer" ColumnName="Interviewer" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TechSkill" ColumnName="TechSkill" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Commentary" ColumnName="Commentary" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechSkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.TechSkill">
+              <MappingFragment StoreEntitySet="TechSkills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacancies">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.Vacancy">
+              <MappingFragment StoreEntitySet="Vacancies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="EngLevel" ColumnName="EngLevel" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="VacancyName" ColumnName="VacancyName" />
+                <ScalarProperty Name="HRM" ColumnName="HRM" />
+                <ScalarProperty Name="LastModifier" ColumnName="LastModifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacancyPrimarySkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.VacancyPrimarySkill">
+              <MappingFragment StoreEntitySet="VacancyPrimarySkill">
+                <ScalarProperty Name="Vacancy" ColumnName="Vacancy" />
+                <ScalarProperty Name="TechSkill" ColumnName="TechSkill" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacancySecondarySkills">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.VacancySecondarySkill">
+              <MappingFragment StoreEntitySet="VacancySecondarySkills">
+                <ScalarProperty Name="Vacancy" ColumnName="Vacancy" />
+                <ScalarProperty Name="TechSkill" ColumnName="TechSkill" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacancyStatuses">
+            <EntityTypeMapping TypeName="KnowBaseDBModel.VacancyStatus">
+              <MappingFragment StoreEntitySet="VacancyStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CandidatesVacancies" TypeName="KnowBaseDBModel.CandidatesVacancies" StoreEntitySet="CandidatesVacancies">
+            <EndProperty Name="Candidates">
+              <ScalarProperty Name="Id" ColumnName="Candidate" />
+            </EndProperty>
+            <EndProperty Name="Vacancies">
+              <ScalarProperty Name="Id" ColumnName="Vacancy" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NotificationEvents" TypeName="KnowBaseDBModel.NotificationEvents" StoreEntitySet="NotificationEvents">
+            <EndProperty Name="Events">
+              <ScalarProperty Name="Id" ColumnName="Event" />
+            </EndProperty>
+            <EndProperty Name="Notifications">
+              <ScalarProperty Name="Id" ColumnName="Notification" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f99fa8e90e9d4ec4995d9f4056968fe8" Name="Diagram1">
+        <EntityTypeShape EntityType="KnowBaseDBModel.CandidatePrevJobsContact" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.CandidatePrimarySkill" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.Candidate" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.CandidateSecondarySkill" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.CandidateStatus" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.City" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.Contact" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.EngLevel" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.EventId" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.Event" Width="1.5" PointX="8.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.EventType" Width="1.5" PointX="6" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.GeneralInterview" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.GeneralSkill" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.Notification" Width="1.5" PointX="13.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.NotificationType" Width="1.5" PointX="11.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.TechInterview" Width="1.5" PointX="8.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.TechSkill" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.UserRole" Width="1.5" PointX="1.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.User" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.Vacancy" Width="1.5" PointX="11.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.VacancyPrimarySkill" Width="1.5" PointX="13.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.VacancySecondarySkill" Width="1.5" PointX="13.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnowBaseDBModel.VacancyStatus" Width="1.5" PointX="9" PointY="26.875" IsExpanded="true" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidatePrevJobsContacts_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidatePrevJobsContacts_Contacts" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidatePrimarySkill_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidatePrimarySkill_TechSkills" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_CandidateStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_Contacts" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_EngLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Candidates_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidateSecondarySkills_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_GeneralInterviews_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_TechInterviews_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_CandidateSecondarySkills_TechSkills" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_GeneralInterviews_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_TechInterviews_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Vacancies_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_GeneralInterviews_EngLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Vacancies_EngLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_EventIds" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_EventTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_GeneralInterviews" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_TechInterviews" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Events_Vacancies" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_GeneralInterviews_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_GeneralInterviews_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Notifications_NotificationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Notifications_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_TechInterviews_TechSkills" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_TechInterviews_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_TechInterviews_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_VacancyPrimarySkill_TechSkills" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_VacancySecondarySkills_TechSkills" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Users_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Vacancies_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Vacancies_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_Vacancies_VacancyStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_VacancyPrimarySkill_Vacancies" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.FK_VacancySecondarySkills_Vacancies" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.CandidatesVacancies" ManuallyRouted="false" />
+        <AssociationConnector Association="KnowBaseDBModel.NotificationEvents" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
