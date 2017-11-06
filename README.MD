@@ -3,5 +3,5 @@
 This is a learning project.
 
 Made in collaboration with
-..* https://github.com/sikmakn
-..* https://github.com/Nastassial
+* https://github.com/sikmakn
+* https://github.com/Nastassial
